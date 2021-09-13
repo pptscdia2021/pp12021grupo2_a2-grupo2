@@ -1,8 +1,9 @@
+def resta(a,b): 
+   return(a-b)
 
 def suma(a,b): 
    return(a+b)
 
-from resta import resta
 import division
 
 if __name__ == "__main__":
