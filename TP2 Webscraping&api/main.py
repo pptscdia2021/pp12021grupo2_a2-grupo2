@@ -1,4 +1,5 @@
 import investpy_spain as invest
+import yahoofinance
 import pandas as pd
 
 if __name__ == "__main__":
@@ -8,9 +9,11 @@ if __name__ == "__main__":
    #Guardar datos en csv
    invest.cargarTablaEnCsv()
 
-   df = pd.read_csv('TP2 Webscraping&api\\investpy_spain.csv')
-   print(df)
+   df_investpy = pd.read_csv('TP2 Webscraping&api\\csv\\investpy_spain.csv')
+   accionesAevaluar = ['ANA', 'BBVA', 'GRLS', 'ELE', 'REP']
+   print(df_investpy[df_investpy.symbol.isin(accionesAevaluar)])
 
-
-
-
+   accionesAevaluar = ["ORI", "ANA.MC", "BBVA.MC", "GRF.MC", "ELE.MC"]
+   yahoofinance.obtenerDatos(accionesAevaluar)
+   df_yfinance = pd.read_csv('TP2 Webscraping&api\\csv\\yahoo_finance.csv')
+   print (df_yfinance)
