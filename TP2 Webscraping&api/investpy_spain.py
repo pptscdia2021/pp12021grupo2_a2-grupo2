@@ -11,6 +11,6 @@ df = obtenerDatosInvestpy()
 
 #Guardar datos en csv
 def cargarTablaEnCsv():
-  df.to_csv("TP2 Webscraping&api\\investpy_spain.csv")
+  df.to_csv("TP2 Webscraping&api\\csv\\investpy_spain.csv")
 
 #guardar = cargarTablaEnCsv()
