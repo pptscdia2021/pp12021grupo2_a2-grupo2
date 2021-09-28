@@ -17,3 +17,12 @@ if __name__ == "__main__":
    yahoofinance.obtenerDatos(accionesAevaluar)
    df_yfinance = pd.read_csv('TP2 Webscraping&api\\csv\\yahoo_finance.csv')
    print (df_yfinance)
+
+#Objetivo 2
+#Obtener las dos acciones de mayor ganancia/pérdida de la Bolsa de España (investing.com)
+
+#Primero cambiamos el porcentaje de canbio a valor numérico y ordenar la tabla de mayor a menor según este valor
+invest.porcentajeCambio()
+
+#Mostramos las dos acciones de mayor ganancia/pérdida
+invest.gananciaPerdida()
