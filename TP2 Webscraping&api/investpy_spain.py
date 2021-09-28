@@ -13,4 +13,25 @@ df = obtenerDatosInvestpy()
 def cargarTablaEnCsv():
   df.to_csv("TP2 Webscraping&api\\csv\\investpy_spain.csv")
 
-#guardar = cargarTablaEnCsv()
+#Cambiar el porcentaje de canbio a valor numérico
+#Ordenar la tabla de mayor a menor según el porcentaje de cambio
+def porcentajeCambio():
+  df = pd.read_csv('TP2 Webscraping&api\\csv\\investpy_spain.csv')
+  df = df.join(df['change_percentage'].str.partition('%')[[0, 1]]).rename({0: 'G/P', 1: '%'}, axis=1)
+  df["G/P"] = df["G/P"].apply(pd.to_numeric)
+  df.sort_values(by='G/P', ascending = False)
+  return df
+
+df_cambioPorcentaje = porcentajeCambio()
+
+#print(df_cambioPorcentaje.head())
+#print("Mayor ganancia",df_cambioPorcentaje['G/P'].max())
+#print("Menor ganancia",df_cambioPorcentaje['G/P'].min())
+
+#Mostrar las dos acciones de mayor ganancia/pérdida
+def gananciaPerdida():
+  print("Acciones de mayor ganancia\n",df_cambioPorcentaje.head(2))
+  print("Acciones de mayor pérdida\n",df_cambioPorcentaje.tail(2))
+
+GP2=gananciaPerdida()
+
