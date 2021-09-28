@@ -19,9 +19,8 @@ def porcentajeCambio():
   df = pd.read_csv('TP2 Webscraping&api\\csv\\investpy_spain.csv')
   df = df.join(df['change_percentage'].str.partition('%')[[0, 1]]).rename({0: 'G/P', 1: '%'}, axis=1)
   df["G/P"] = df["G/P"].apply(pd.to_numeric)
-  df.sort_values(by='G/P', ascending = False)
-  return df
-
+  return df.sort_values(by='G/P', ascending = False)
+  
 df_cambioPorcentaje = porcentajeCambio()
 
 #print(df_cambioPorcentaje.head())
@@ -33,5 +32,6 @@ def gananciaPerdida():
   print("Acciones de mayor ganancia\n",df_cambioPorcentaje.head(2))
   print("Acciones de mayor pérdida\n",df_cambioPorcentaje.tail(2))
 
+print(df_cambioPorcentaje)
 GP2=gananciaPerdida()
 
