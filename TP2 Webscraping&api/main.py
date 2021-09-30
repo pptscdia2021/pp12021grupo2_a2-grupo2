@@ -35,8 +35,8 @@ if __name__ == "__main__":
    #Objetivo 2
    print('2 ACCIONES DE MAYOR GANANCIA, MAYOR PERDIDA - INVESTPY')
    odos.obtenerGananciaPerdida(df_investpy, 'G/P', 2)
-   odos.graficarGananciaPerdida(df_investpy, x='symbol', y='G/P')
+   odos.graficarGananciaPerdida(df_investpy, x='symbol', y='G/P', nombre='TP2 Webscraping&api\\Graficos\\Ganan_perd_BolsaEspaña.png')
    print('')
    print('2 ACCIONES DE MAYOR GANANCIA, MAYOR PERDIDA - BOLSA DE MADRID')
    odos.obtenerGananciaPerdida(df_bolsaMadrid, '% Dif.', 2)
-   odos.graficarGananciaPerdida(df_bolsaMadrid, x='Nombre', y='% Dif.')
+   odos.graficarGananciaPerdida(df_bolsaMadrid, x='Nombre', y='% Dif.', nombre='TP2 Webscraping&api\\Graficos\\Ganan_perd_BolsaMadrid.png')
