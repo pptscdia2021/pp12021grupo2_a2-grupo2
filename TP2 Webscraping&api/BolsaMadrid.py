@@ -30,6 +30,9 @@ def obtenerDatos():
     #creamos el dataframe usando la lista columnas,pasamos el contenido (de la posicion 1 en adelante), y lo encabezados en (posicion 0)
     df = pd.DataFrame(columnas[1:], columns=columnas[0])
 
+    #% Dif. reemplazamos la , por un . y convertimos en float
+    df["% Dif."] = df["% Dif."].str.replace(",", ".").astype(float)
+    
     #Guardamos en el archivo csv
 
     df.to_csv('TP2 Webscraping&api\\csv\\bolsaMadrid.csv')

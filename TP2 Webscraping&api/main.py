@@ -2,11 +2,19 @@ import investpy_spain as invest
 import yahoofinance
 import BolsaMadrid
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def obtenerGananciaPerdida(df, columna, cant):
   df = df.sort_values(by=columna, ascending = False)
   print("Acciones de mayor ganancia\n",df.head(cant))
   print("Acciones de mayor pérdida\n",df.tail(cant))
+
+def graficarGananciaPerdida(df,x,y):
+    df = df
+    axis = df.plot.bar(x,y)
+    print(axis)
+    plt.title('Ganancia/pérdida de las acciones')
+    plt.show()
 
 if __name__ == "__main__":
    #Obtener la tabla en tiempo real de la bolsa de españa
@@ -37,6 +45,8 @@ if __name__ == "__main__":
    #Objetivo 2
    print('2 ACCIONES DE MAYOR GANANCIA, MAYOR PERDIDA - INVESTPY')
    obtenerGananciaPerdida(df_investpy, 'G/P', 2)
+   graficarGananciaPerdida(df_investpy, x='symbol', y='G/P')
    print('')
    print('2 ACCIONES DE MAYOR GANANCIA, MAYOR PERDIDA - BOLSA DE MADRID')
    obtenerGananciaPerdida(df_bolsaMadrid, '% Dif.', 2)
+   graficarGananciaPerdida(df_bolsaMadrid, x='Nombre', y='% Dif.')
