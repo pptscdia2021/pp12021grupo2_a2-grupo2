@@ -3,7 +3,6 @@ import yahoofinance
 import BolsaMadrid
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 import ganancia_perdida as gp
 
 
@@ -28,7 +27,7 @@ if __name__ == "__main__":
    #Mostrar tabla en pantalla usando yfinance (bolsa eeuu)
    print('')
    print('TABLA DE DATOS EEUU (USANDO YFINANCE)')
-   accionesAevaluar = ["ORI", "ANA.MC", "BBVA.MC", "GRF.MC", "ELE.MC"]
+   accionesAevaluar = ["ANA.MC", "BBVA.MC", "GRF.MC", "ELE.MC","REP.MC"]
    yahoofinance.obtenerDatos(accionesAevaluar)
    df_yfinance = pd.read_csv('TP2 Webscraping&api\\csv\\yahoo_finance.csv')
    print (df_yfinance)
