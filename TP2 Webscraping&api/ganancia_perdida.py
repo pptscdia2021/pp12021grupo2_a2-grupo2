@@ -7,9 +7,9 @@ def obtenerGananciaPerdida(df, columna, cant):
   print("Acciones de mayor ganancia\n",df.head(cant))
   print("Acciones de mayor pérdida\n",df.tail(cant))
 
-def graficarGananciaPerdida(df,x,y,kind,nombre):
+def graficarGananciaPerdida(df,x,y,kind,titulo,nombre):
     ax = df.plot(x,y,kind);print(ax)
-    plt.title('Ganancia/pérdida de las acciones')
+    plt.title(titulo)
     plt.savefig(nombre, bbox_inches='tight')
     plt.tight_layout();plt.show()
     

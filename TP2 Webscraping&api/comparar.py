@@ -11,6 +11,8 @@ def crearTablaComparacion(bolsaMadrid, investpy, yfinance):
    df = pd.concat([bolsaMadrid, investpy['last'], yfinance['Close']], axis=1)
 
 #Renombrando Columnas
-   df = df.rename({'Últ.': 'Bolsa Madrid (EUR)', 'last': 'InvestPY (EUR)', 'Close': 'Yahoo Finance (U$D)'}, axis=1)
+   df = df.rename({'Últ.': 'Bolsa Madrid (EUR)', 'last': 'InvestPY (EUR)', 'Close': 'Yahoo Finance (EUR)'}, axis=1)
    
+
    return df
+   
