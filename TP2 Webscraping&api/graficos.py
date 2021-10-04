@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
+
 def graficarMaxMin(df,x,max,min,nombre):
     fig, ax = plt.subplots()
     x = df[x]

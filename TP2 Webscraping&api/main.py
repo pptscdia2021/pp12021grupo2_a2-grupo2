@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import ganancia_perdida as gp
 import graficos as g
+import comparar
 
 
 if __name__ == "__main__":
@@ -16,14 +17,16 @@ if __name__ == "__main__":
    print('TABLA DE DATOS BOLSA DE MADRID (USANDO investpy)')
    df_investpy = pd.read_csv('TP2 Webscraping&api\\csv\\investpy_spain.csv')
    accionesAevaluarI = ['ANA', 'BBVA', 'GRLS', 'ELE', 'REP']
-   print(df_investpy[df_investpy.symbol.isin(accionesAevaluarI)].sort_values(by='symbol'))
+   df_investpy = df_investpy[df_investpy.symbol.isin(accionesAevaluarI)].sort_values(by='symbol')
+   print(df_investpy)
    
    #Mostrar tabla en pantalla usando BeautiFoul Soup
    print('')
    print('TABLA DE DATOS BOLSA DE MADRID (USANDO BS4)')
    df_bolsaMadrid = pd.read_csv('TP2 Webscraping&api\\csv\\bolsaMadrid.csv')
    accionesAevaluarB = ['ACCIONA', 'BBVA', 'GRIFOLS CL.A', 'ENDESA', 'REPSOL']
-   print(df_bolsaMadrid[df_bolsaMadrid.Nombre.isin(accionesAevaluarB)])
+   df_bolsaMadrid = df_bolsaMadrid[df_bolsaMadrid.Nombre.isin(accionesAevaluarB)]
+   print(df_bolsaMadrid)
 
    #Mostrar tabla en pantalla usando yfinance (bolsa eeuu)
    print('')
@@ -32,6 +35,12 @@ if __name__ == "__main__":
    yahoofinance.obtenerDatos(accionesAevaluar)
    df_yfinance = pd.read_csv('TP2 Webscraping&api\\csv\\yahoo_finance.csv')
    print (df_yfinance)
+
+   #Comparando resultados
+   tablaComparacion = comparar.crearTablaComparacion(bolsaMadrid=df_bolsaMadrid, investpy=df_investpy, yfinance=df_yfinance)
+   print('')
+   print('Tabla de comparacion del valor de las acciones evaluadas')
+   print(tablaComparacion)
 
    #Objetivo 2
    print('2 ACCIONES DE MAYOR GANANCIA, MAYOR PERDIDA - INVESTPY')
@@ -53,4 +62,4 @@ if __name__ == "__main__":
    g.graficarMaxMinTotal(df_bolsaMadrid, x='Nombre', max='Máx.', min='Mín.', nombre='TP2 Webscraping&api\\Graficos\\maxMinBs4_totalAcciones.png')
    
    
-
+   
