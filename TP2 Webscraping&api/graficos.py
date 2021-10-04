@@ -18,7 +18,7 @@ def graficarMaxMin(df,x,max,min,titulo,nombre):
 
 def graficarComparacion(df,x,titulo,nombre):
     plt.style.use('ggplot')
-    df.set_index(x).plot.bar(rot=0, title=titulo, figsize=(8,8), fontsize=12)
+    df.set_index(x).plot.bar(rot=0, title=titulo, figsize=(6,6), fontsize=12)
     plt.savefig(nombre, bbox_inches='tight')
     plt.tight_layout();plt.show()
  
