@@ -46,7 +46,6 @@ if __name__ == "__main__":
    print(tablaComparacion)
    g.graficarComparacion(tablaComparacion, x='Nombre', titulo='Comparación acciones evaluadas',nombre='TP2 Webscraping&api\\Graficos\\comparacionAccionesEvaluadas.png')
 
-
    #Ganancia o pérdida de las acciones
    print('')
    print('2 ACCIONES DE MAYOR GANANCIA, MAYOR PERDIDA - INVESTPY')
