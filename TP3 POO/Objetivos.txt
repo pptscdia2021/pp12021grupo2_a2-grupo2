@@ -1,0 +1,20 @@
+Objetivo 1
+WebScraping: obtener los datos de la Bolsa de Madrid (BeautifulSoup). 
+GUARDAR LOS DATOS EN MONGO. 
+Mostrar los datos en una tabla en consola. 
+Api: obtener los datos de Yahoo Finance (YFinance). 
+GUARDAR LOS DATOS EN MONGO. 
+Mostrar los datos en una tabla en consola.  
+Otras fuentes de datos: 
+eXtraer los datos de Investing.com (Investpy). 
+GUARDAR LOS DATOS EN MONGO. 
+Mostrar los datos en una tabla en consola.   
+
+Objetivo 2
+Identificar las 2 cotizaciones de mayor ganancia y de mayor perdida (Bolsa de Madrid).
+
+Objetivo 3
+Comparativa de precios de cotización entre los orígenes de datos.
+
+Objetivo 4
+Hacer un reporte de resultados.
