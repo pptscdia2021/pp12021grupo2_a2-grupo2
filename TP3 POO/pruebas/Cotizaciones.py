@@ -29,3 +29,15 @@ class Cotizaciones():
         plt.xlabel('Acciones') #título del eje de las x
         plt.savefig(nombre, bbox_inches='tight') #guardamos el gráfico, 'tight' para guardarlo completo [parámetro: nombre]
         plt.tight_layout();plt.show() #mostramos el gráfico de manera completa
+    
+    #otra forma de mostrar el gráfico (pero no quedaría bien)
+    #me parece que pega las columnas que tienen el mismo valor
+    def graficarComparacion2(self,titulo,nombre):
+        df = self.juntarDBS()
+        comparar = df.groupby(['symbol', 'origen']).mean()["ult"].unstack()
+        # genera el gráfico:
+        comparar.plot(kind="bar",width=1, color=["#06C2A6","#FF7960","#DBB40C"], figsize=(8,8))
+        plt.tight_layout()  # tip(!)
+        plt.title(titulo) #título del grafico 
+        plt.xlabel('Acciones') #título del eje de las x
+        plt.savefig(nombre, bbox_inches='tight') 
