@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from os import remove
 from bson.json_util import dumps, loads
+import pandas as pd
 
 """ Entidad Cotizaciones: Unifica las cotizaciones de los 3 mercados y grafica la comparación de la última cotización de 
 los mismos """
