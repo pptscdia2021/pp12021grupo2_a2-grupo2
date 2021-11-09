@@ -9,7 +9,10 @@ from datetime import datetime
 from os import remove
 from bson.json_util import dumps, loads
 
-""" Entidad ACCION: Representa a cada titulo de empresa (una accion) que traemos desde la fuente de datos, la utilizamos antes de guardar los datos en la coleccion Mongo para darle un formato unificado al contenido. Tambien se puede usar para trabajar de forma individual con una accion en particular (En desarrollo). Los dos metodos que posee ademas del constructor actuan en conjunto para devolver la instancia como un diccionario"""
+""" Entidad ACCION: Representa a cada titulo de empresa (una accion) que traemos desde la fuente de datos, 
+la utilizamos antes de guardar los datos en la coleccion Mongo para darle un formato unificado al contenido. 
+Tambien se puede usar para trabajar de forma individual con una accion en particular (en desarrollo). 
+Los dos metodos que posee ademas del constructor actuan en conjunto para devolver la instancia como un diccionario"""
 
 class Accion:
     def __init__(self, mercado, datosAccion):
@@ -29,7 +32,10 @@ class Accion:
     def __getitem__(self, item):
         return getattr(self, item)
 
-""" Entidad que representa la conexion con la base de datos MongoDB, revise dos parametros en su creacion: El nombre de la base de datos y el nombre la coleccion. De no existir se encarga de crearla. Posee el metodo borracColeccion para eliminar la coleccion. """
+""" Entidad que representa la conexion con la base de datos MongoDB, revise dos parametros en su creacion: 
+el nombre de la base de datos y el nombre la coleccion. De no existir se encarga de crearla. 
+Posee el metodo borracColeccion para eliminar la coleccion. """
+
 class Coleccion:
     def __init__(self, nombreBD, nombreColeccion):
         self.__abrirColeccion(nombreBD, nombreColeccion)
@@ -42,7 +48,11 @@ class Coleccion:
     def borrarColeccion(self):
         self.datos.drop()
 
-""" Entidad Mercado: Es la super clase encargada de definir los metodos para: guardar en la base de datos el contenido extraido de la fuente, visualizar los datos de la coleccion en pantalla, convertir los datos de la coleccion en dataframe, mostrar la cantidad de acciones de mayor perdida y ganancia y realizar distintos graficos analizando los datos de la coleccion. """
+""" Entidad Mercado: Es la super clase encargada de definir los métodos para guardar en la base 
+de datos el contenido extraído de la fuente, visualizar los datos de la coleccion en pantalla, 
+convertir los datos de la coleccion en dataframe, mostrar la cantidad de acciones de mayor pérdida 
+y ganancia y realizar distintos graficos analizando los datos de la coleccion."""
+
 class Mercado:
     def __init__(self):
         self.bd = Coleccion('Mercados', f"{self.__class__.__name__} - {datetime.now().strftime('%d/%m/%Y')}")
@@ -116,7 +126,12 @@ class Mercado:
         cursor = self.coleccion.find_one({'symbol': symbol})
         return cursor
         
-""" Entidad BolsaDeMadrid: hereda de la superclase Mercado y define su propio metodo para obtener los datos de la fuente. Define atributos de clase que representan los nombres de las columnas con la informacion obtenida, estos datos se usan para formatear el contenido que se guarda en la base de datos """
+""" Entidad BolsaDeMadrid: hereda de la superclase Mercado y define su propio metodo para obtener 
+los datos de la fuente. Define atributos de clase que representan los nombres de las columnas con 
+la informacion obtenida, estos datos se usan para formatear el contenido que se guarda en la 
+base de datos """
+
+
 class BolsaDeMadrid(Mercado):
     campo_nombre = 'Nombre'
     campo_valorMaximo = 'Máx'
@@ -182,7 +197,9 @@ class BolsaDeMadrid(Mercado):
         df["Últ"] = df["Últ"].str.replace(",", ".").astype(float)
         return df
 
-""" Entidad Invest: Representa los datos de mercado usando la libreria investPy que extrae los datos de invest.com. Hereda de la clase Mercado, y tiene atributos que representan sus columnas """
+""" Entidad Investing: Representa los datos de mercado usando la libreria investPy que extrae los datos 
+de investing.com. Hereda de la clase Mercado, y tiene atributos que representan sus columnas """
+
 class Investing(Mercado):
     
     campo_nombre = 'symbol'
@@ -216,7 +233,9 @@ class Investing(Mercado):
     def __porcentajeCambio(self, df):
         return df.join(df['change_percentage'].str.partition('%')[[0, 1]]).rename({0: 'GP', 1: '%'}, axis=1)
 
-""" Entidad YahooFinance: Hereda de la clase mercado, posee sus atributos de clase para los nombre de las columnas. Utiliza la libreria yfinance para extraer los datos de bolsa desde yahoofinance.com """
+""" Entidad YahooFinance: Hereda de la clase mercado, posee sus atributos de clase para los nombre de 
+las columnas. Utiliza la libreria yfinance para extraer los datos de bolsa desde yahoofinance.com """
+
 class YahooFinance(Mercado):
     campo_nombre = 'Ticker'
     campo_valorMaximo = 'High'
