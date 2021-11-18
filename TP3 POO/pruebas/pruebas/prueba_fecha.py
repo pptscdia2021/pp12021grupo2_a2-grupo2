@@ -14,3 +14,5 @@ print(now)
 hora = datetime.now().strftime('%H:%M:%S')
 print(hora)
 
+dia = datetime.date(2021,11,22)
+
